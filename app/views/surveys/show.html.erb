@@ -1,0 +1,31 @@
+<div class="container">
+
+	<p>
+		<strong>Name:</strong>
+		<%= @survey.name %>
+	</p>
+
+	<% if !@survey.questions.blank? %>
+		<ol>
+			<% for question in @survey.questions %>
+				<li>
+					<%= question.content %>
+					<% if !question.answers.blank? %>
+						<ul>
+							<% for answer in question.answers %>
+								<li><%= answer.content %></li>
+							<% end %>
+						</ul>
+					<% else %>
+
+					<% end %>
+				</li>
+			<% end
+			else %>
+			No questions
+		</ol>
+	<% end %>
+
+	<%= link_to 'Edit', edit_survey_path(@survey) %>
+
+</div>

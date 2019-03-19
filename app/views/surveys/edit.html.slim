@@ -1,0 +1,21 @@
+.container
+
+	= form_for(@survey) do |f|
+
+		- if @survey.errors.any?
+			#error_explanation
+				ul
+					- @survey.errors.full_messages.each do |message|
+						li = message
+
+		.form-group
+			= f.label :name
+			= f.text_field :name, class: "form-control"
+
+		= f.fields_for :questions do |builder|
+			= render 'surveys/question_fields', f: builder
+
+		= link_to_insert_new_field "+ Add question", f, :questions
+
+		hr
+		= f.submit class: "btn btn-primary"

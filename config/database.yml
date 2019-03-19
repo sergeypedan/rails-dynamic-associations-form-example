@@ -1,0 +1,13 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # host: localhost # Heroku
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 5432
+  # reaping_frequency: nil
+  timeout: 5000
+  username: <%= `whoami`.chomp %>
+
+development:
+  <<: *default
+  database: ajax_hmt_development

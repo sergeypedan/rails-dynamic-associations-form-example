@@ -1,0 +1,17 @@
+fieldset style="margin-top: 30px; padding: 30px; padding-top: 0; border: solid 1px hsl(0, 0%, 90%)"
+	legend style="width: auto" Question
+
+	.form-group
+		= f.label     :content, "Question text"
+		= f.text_area :content, rows: 3, class: "form-control"
+
+	.form-group.form-check
+		= f.check_box :_destroy, class: "form-check-input"
+		= f.label     :_destroy, "Remove question", class: "form-check-label"
+
+	h5 style="margin-top: 30px" Answers
+
+	= f.fields_for :answers do |builder|
+		= render 'answer_fields', f: builder
+
+	= link_to_insert_new_field "+ Add answer", f, :answers, { style: "margin-top: 15px", class: 'add_fields btn btn-light btn-sm' }

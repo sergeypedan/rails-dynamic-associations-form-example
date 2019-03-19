@@ -1,0 +1,13 @@
+fieldset style="margin-top: 20px; padding: 20px; padding-top: 0; border: solid 1px hsl(0, 0%, 90%);"
+
+	legend style="width: auto; font-size: 17px;" Answer
+
+	.row
+		.col-sm-9
+			.form-group.row style="margin-bottom: 0"
+				= f.label      :content, "Text", class: "col-form-label col-sm-2 text-right"
+				= f.text_field :content, class: "form-control col-sm-10", required: true
+
+		.col-sm-3
+			= f.hidden_field :_destroy
+			= link_to "× Remove answer", "#", class: 'btn btn-light btn-sm', data: { action: "remove-field" }
